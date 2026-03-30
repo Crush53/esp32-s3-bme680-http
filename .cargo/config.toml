@@ -1,0 +1,16 @@
+[target.xtensa-esp32s3-none-elf]
+runner = "espflash flash --monitor --chip=esp32s3 --non-interactive --log-format serial"
+
+[env]
+DEFMT_LOG="info"
+ESPFLASH_PORT="/dev/cu.usbserial-110"
+
+[build]
+rustflags = [
+  "-C", "link-arg=-nostartfiles",
+]
+
+target = "xtensa-esp32s3-none-elf"
+
+[unstable]
+build-std = ["alloc", "core"]
